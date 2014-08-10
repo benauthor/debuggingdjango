@@ -20,3 +20,11 @@ def rpdb_view(request):
     """
     import rpdb; rpdb.set_trace()
     return HttpResponse("This works.")
+
+def oops(request):
+    """
+    Here we just break the code and see whatever the setup gives us in the
+    browser. Hoping for the werkzeug debugger niceness.
+    """
+    asdf
+    return HttpResponse("This works.")
