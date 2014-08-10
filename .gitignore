@@ -1,0 +1,4 @@
+venv/
+*~
+*.pyc
+myapp/db.sqlite3

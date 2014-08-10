@@ -1,0 +1,4 @@
+django
+rpdb
+werkzeug
+gunicorn
