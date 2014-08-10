@@ -1,4 +1,5 @@
 django
 rpdb
 werkzeug
+weberror
 gunicorn

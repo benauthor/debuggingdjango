@@ -8,8 +8,8 @@ were:
 1. Pdb. since i'm not running a dev server from a terminal, I can't
 just drop a pdb breakpoint and go start debugging.
 
-2. In-browser debugging. Paste and Werkzeug both have nifty debug-mode
-error screens. So handy!
+2. In-browser debugging. Pylons and Werkzeug both supply nifty
+debug-mode error screens. So handy!
 
 This repo shows three routes to debugging bliss.
 
@@ -35,10 +35,11 @@ back in your terminal: pdb is ready to use.
 ## RPDB
 
 So if you can't get back to an interactive console, how do you see a
-debugger? Rpdb is a simple yet brilliant project that wraps PDB in a
-simple server and serves the debugging shell on a port on your
-localhost.  Again, be sure to up your server's timeout to something
-large so you have time to debug. To demo:
+debugger? [Rpdb](https://github.com/tamentis/rpdb) is a simple yet
+brilliant project that wraps PDB in a simple server and serves the
+debugging shell on a port on your localhost.  Again, be sure to up
+your server's timeout to something large so you have time to debug. To
+demo:
 
     cd myapp
     ./rungunicornasdaemon.sh
@@ -49,14 +50,19 @@ visit `http://localhost:8000/demo/rpdb/` and then
 
 Now you are in a pdb session! Nice!
 
-## Werkzeug
+## In-browser debugging
 
-You can use Werkzeug's DebuggedApplication middleware to replace
-Django's lame default debug-mode error page. Check out
-myapp/wsgi_debugged.py to see how that works. To demo:
+You can use Werkzeug's DebuggedApplication middleware or Pylon's
+WebError (formerly part of Paste) to replace Django's lame default
+debug-mode error page. Check out myapp/wsgi_debugged.py to see how
+that works. To demo:
 
     cd myapp
-    ./rungunicorndebugged.sh
+    ./rungunicornwerkzeug.sh
+
+or
+
+    ./rungunicornweberror.sh
 
 and visit `http://localhost:8000/demo/oops/`, whose view has an
 intentional error that triggers the nice in-browser debugger.
